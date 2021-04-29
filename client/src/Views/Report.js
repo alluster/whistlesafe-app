@@ -7,20 +7,30 @@ import {
 	BrowserRouter as Router,
 	useParams
   } from "react-router-dom";
+  import { device } from '../device';
+
 import Container from '../Components/Container';
 import generator from 'generate-password';
 import Button from '../Components/Button';
 import Hero from '../Components/Hero';
 import { AppContext } from '../context/Context';
+import Spinner from '../Components/Spinner';
 
 
-const Input = styled.input`
+const Input = styled.textarea`
 	height: 40px;
-	border: gray solid 1px;
+	border: #DADADA solid 1px;
+	border-radius: 2px;
 	padding-left: 20px;
 	line-height: 40px;
+	background-color: #F7F7F7; 
+	margin-top: 10px;
 
 `
+const Label = styled.label`
+  color: #6F6F6F;
+  font-size: 12px;
+`;
 
 const InputGroup = styled.div`
   display: flex;
@@ -29,7 +39,34 @@ const InputGroup = styled.div`
 
 `
 
+const Card = styled.div `
+	min-height: 100%;
+	background-color: white;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 40px
+	width: 100%;
+	border-radius: 16px;
+	padding: 20px;
+	border: 1px solid #F4F4F4;
+	-webkit-box-shadow: 0px 5px 13px 1px rgba(216,216,216,0.26); 
+	box-shadow: 0px 5px 13px 1px rgba(216,216,216,0.26);
+	@media ${device.laptop} {
+		width: 70vw;
 
+	}
+		
+	`;
+const CardContent = styled.div `
+	max-width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	@media ${device.laptop} {
+		width: 70vw;
+
+	}
+		
+	`;
 var password = generator.generate({
 	length: 10,
 	numbers: true
@@ -48,6 +85,9 @@ const Report = () => {
 	
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setLoading(true)
+		
+
 		try {
 			return await axios.get('/api/createreport',  {
 				params: {
@@ -59,11 +99,14 @@ const Report = () => {
 				}	
 			})
 		
-			.then(alert("Report saved"), history.push('/'))
+			.then( setTimeout(function(){ return (setLoading(false), alert("Thank you! Your message has been successfully sent"), history.push('/') )}, 3000))
+		
 		} 
 		catch (error) {
+			setLoading(false) 
 			console.error(error.message)
 		}
+
 	}
 
 
@@ -74,35 +117,51 @@ const Report = () => {
     return(
 		<div>
 
-			<Hero ingress={`Your uniq report ID: ${reportId}`} title="Report"/>
 		<Container>
-				<h1 style={{marginBottom: "30px" }}></h1> 
+			<Card>
+				<CardContent>
+				{
+					!loading ?
+
+					
+
+					<div>
+				<h4 >Your uniq report ID: {reportId}</h4> 
+				<h4 style={{marginBottom: "30px" }}>Password: {reportId}</h4> 
+
 				<form>
 					<InputGroup>
-						<label>Please describe your concern</label>
-						<Input type="text" placeholder="Description" value={report} onChange={(e) => setReport(e.target.value)} />
+						<Label>Please describe your concern</Label>
+						<Input type="text" rows="10" placeholder="Description" value={report} onChange={(e) => setReport(e.target.value)} />
 					</InputGroup>
 					<InputGroup>
-						<label>When did this happen?</label>
+						<Label>When did this happen?</Label>
 						<Input type="text" placeholder="Time" value={time} onChange={(e) => setTime(e.target.value)} />
 					</InputGroup>
 					<InputGroup>
-						<label>Please provide any important details</label>
+						<Label>Please provide any important details</Label>
 						<Input type="text" placeholder="Details" value={details} onChange={(e) => setDetails(e.target.value)} />
 					</InputGroup>
 			
 					
 
 					<Button to="/" variant="primary" type="submit" onClick={e => handleSubmit(e)}>
-					Save report
+					Send private messsage
 				</Button>
 				</form>
+					</div>
+					:
+					<Spinner />
+				}
+				
 					
 
 				
 
-			
-			
+				</CardContent>
+
+				</Card>
+
 		</Container>
 		</div>
 

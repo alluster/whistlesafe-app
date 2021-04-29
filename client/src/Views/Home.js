@@ -32,19 +32,27 @@ const Home = () => {
 	}, [])
 	return (
 		<Suspense fallback={<Spinner />}>
-			<Hero title="File a new report" ingress="By clicking Create new report you are redirected to a secure whistleblow form that allows you to file an anonymous report of any suspicious of misconduct in your organisation." >
+			<Hero title="Anything on your mind?" ingress="Together we are committed for a safer, equal and transparent work environment. Safety and open culture is in the core of our work. We value respect and safety of everyone affected our business." >
 				<ButtonRow>
-					<Button to="/report"><h4>Create a new report</h4></Button>
+					<Button to="/report"><h4>Create a new message</h4></Button>
 				</ButtonRow>
 
 			</Hero>
 			<Container >
-				<h1 style={{ marginTop: "90px"}}>Direct way for emplyees and stakeholders to report suspicious of misconduct anonymously</h1>
-				<h4 style={{ marginTop: "30px"}}>As from 2021 every organisation with over 50 employees will be requested to enable anonymous reporting for employees and stakeholders</h4>			
-				<h5 style={{ marginTop: "20px"}}>What is Whistleblowing?</h5>
-				<p>Ipsum lorem doloris particia maximus lorem  doloris particia maximus lorem doloris particia maximus lorem. Ipsum lorem doloris particia maximus lorem  doloris particia maximus lorem doloris particia maximus lorem.</p>
-				<ButtonRow style={{ marginTop: "90px"}}>
-					<Button to="/report" ><h4>Follow my report</h4></Button>
+				<h4 style={{ marginTop: "60px"}}>We are all committed to transparency and equality.</h4>
+				<h1 style={{ marginTop: "10px"}}>Our Whistleblowing service</h1>	
+				<h4 style={{ marginTop: "30px"}}>Whistleblowing service can be used when you have concern about something that doesn't align with our company values, ethics or is legally suspicious or may affect someones health.</h4>			
+				<ButtonRow style={{ marginTop: "30px"}}>
+					<Button to="/report"><h4>Create a new message</h4></Button>
+				</ButtonRow>
+				<h2 style={{ marginTop: "80px"}}>Absolutelly private and anonymous service.</h2>	
+				<h4 style={{ marginTop: "30px"}}>Whistleblow service is completelly anonymous and no IP address, ID or email data is stored when a message is reported. All messages are handeled with confidence and security.</h4>			
+
+				<p style={{ marginTop: "30px"}}>Whistleblow is an EU compliant service that matches requirements set by European Union for organisations with 50 employees or more. The Whistleblow service is not meant to use only by company employees but is accessible for all stakeholders that are engaged with our organisation.</p>			
+				<h3 style={{ marginTop: "80px"}}>Have you filed a message already?</h3>	
+				<h4 style={{ marginTop: "30px"}}>Pleace follow the progress of your message by clicking "Follow my message". You will be asked to provide message ID and password that was generated when your message was sent. </h4>			
+				<ButtonRow style={{ marginTop: "40px"}}>
+					<Button to="/report" ><h4>Follow my message</h4></Button>
 				</ButtonRow>
 
 			</Container>

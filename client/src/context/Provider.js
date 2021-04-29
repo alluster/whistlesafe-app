@@ -19,6 +19,7 @@ const Provider = ({ children }) => {
 				setOrgColor(data.org_color)
 				setLogoUrl(data.logo_url)
 				setOrgId(data.org_id)
+				console.log(orgId)
 			})
 			.catch(function (error) {
 				console.log(error);

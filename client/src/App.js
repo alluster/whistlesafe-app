@@ -8,6 +8,8 @@ import GlobalStyle from './globalStyle';
 import theme from './theme';
 import { ThemeProvider } from 'styled-components';
 import Spinner from './Components/Spinner';
+import Footer from './Components/Footer';
+
 import Provider from './context/Provider';
 // Views
 const Report = React.lazy(() => import('./Views/Report'));
@@ -24,11 +26,12 @@ const App = () => {
 					<Router>
 
 						<TopNav/>
-
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route path="/report" component={Report} />
 						</Switch>	
+						<Footer />
+
 					</Router>
 					<GlobalStyle />
 				</Provider>
