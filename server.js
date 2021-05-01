@@ -42,7 +42,7 @@ app.get('/api/organisation', (req, res) => {
 app.get('/api/createreport', (req, res) => {
 	pool.getConnection(function(err, connection) {
 		if (err) throw err; 
-		query = SQL`INSERT INTO reports (report, date_added, report_description, report_id, org_id) VALUES (${req.query.report},${req.query.time},${req.query.details},${req.query.reportId},${req.query.orgId})`	
+		query = SQL`INSERT INTO reports (report, date_added, occur_time, report_description, report_id, org_id) VALUES (${req.query.report},${req.query.dateAdded},${req.query.occurTime},${req.query.details},${req.query.reportId},${req.query.orgId})`	
 		connection.query(
 			query,
 			function (error, results, fields) {

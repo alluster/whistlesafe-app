@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios'
@@ -6,8 +6,8 @@ import { useHistory } from "react-router-dom";
 import {
 	BrowserRouter as Router,
 	useParams
-  } from "react-router-dom";
-  import { device } from '../device';
+} from "react-router-dom";
+import { device } from '../device';
 
 import Container from '../Components/Container';
 import generator from 'generate-password';
@@ -39,7 +39,7 @@ const InputGroup = styled.div`
 
 `
 
-const Card = styled.div `
+const Card = styled.div`
 	min-height: 100%;
 	background-color: white;
 	margin-right: auto;
@@ -57,7 +57,7 @@ const Card = styled.div `
 	}
 		
 	`;
-const CardContent = styled.div `
+const CardContent = styled.div`
 	max-width: 400px;
 	margin-right: auto;
 	margin-left: auto;
@@ -79,31 +79,32 @@ const Report = () => {
 
 	const [loading, setLoading] = useState(false);
 	const [report, setReport] = useState("")
-	const [time, setTime] = useState("")
+	const [occurTime, setOccurTime] = useState("")
 	const [details, setDetails] = useState("")
 	const [reportId, setReportId] = useState(password)
-	
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true)
-		
+
 
 		try {
-			return await axios.get('/api/createreport',  {
+			return await axios.get('/api/createreport', {
 				params: {
 					reportId: reportId,
 					report: report,
-					time: time,
+					occurTime: occurTime,
+					dateAdded: new Date().toUTCString(),
 					details: details,
-					orgId: orgId	
-				}	
+					orgId: orgId
+				}
 			})
-		
-			.then( setTimeout(function(){ return (setLoading(false), alert("Thank you! Your message has been successfully sent"), history.push('/') )}, 3000))
-		
-		} 
+
+				.then(setTimeout(function () { return (setLoading(false), alert("Thank you! Your message has been successfully sent"), history.push('/')) }, 3000))
+
+		}
 		catch (error) {
-			setLoading(false) 
+			setLoading(false)
 			console.error(error.message)
 		}
 
@@ -111,69 +112,74 @@ const Report = () => {
 
 
 	useEffect(() => {
+		console.log(new Date().toUTCString())
 	}, [])
 
 
-    return(
+	return (
 		<div>
 
-		<Container>
-			<Card>
-				<CardContent>
-				{
-					!loading ?
+			<Container>
+				<Card>
+					<CardContent>
+						{
+							!loading ?
 
-					
 
-					<div>
-				<h4 >Your uniq report ID: {reportId}</h4> 
-				<h4 style={{marginBottom: "30px" }}>Password: {reportId}</h4> 
 
-				<form>
-					<InputGroup>
-						<Label>Please describe your concern</Label>
-						<Input type="text" rows="10" placeholder="Description" value={report} onChange={(e) => setReport(e.target.value)} />
-					</InputGroup>
-					<InputGroup>
-						<Label>When did this happen?</Label>
-						<Input type="text" placeholder="Time" value={time} onChange={(e) => setTime(e.target.value)} />
-					</InputGroup>
-					<InputGroup>
-						<Label>Please provide any important details</Label>
-						<Input type="text" placeholder="Details" value={details} onChange={(e) => setDetails(e.target.value)} />
-					</InputGroup>
-			
-					
+								<div>
+									<h4 >Your uniq report ID: {reportId}</h4>
+									<h4 style={{ marginBottom: "30px" }}>Password: {reportId}</h4>
 
-					<Button to="/" variant="primary" type="submit" onClick={e => handleSubmit(e)}>
-					Send private messsage
+									<form>
+										<InputGroup>
+											<Label>Date of report</Label>
+											<Input type="text" rows="1" placeholder="Date of report" value={new Date().toUTCString()} disabled />
+										</InputGroup>
+										<InputGroup>
+											<Label>Please describe your concern</Label>
+											<Input type="text" rows="10" placeholder="Description" value={report} onChange={(e) => setReport(e.target.value)} />
+										</InputGroup>
+										<InputGroup>
+											<Label>When did this happen?</Label>
+											<Input type="text" placeholder="Ocur time" value={occurTime} onChange={(e) => setOccurTime(e.target.value)} />
+										</InputGroup>
+										<InputGroup>
+											<Label>Please provide any important details</Label>
+											<Input type="text" placeholder="Details" value={details} onChange={(e) => setDetails(e.target.value)} />
+										</InputGroup>
+
+
+
+										<Button to="/" variant="primary" type="submit" onClick={e => handleSubmit(e)}>
+											Send private messsage
 				</Button>
-				</form>
-					</div>
-					:
-					<Spinner />
-				}
-				
-					
+									</form>
+								</div>
+								:
+								<Spinner />
+						}
 
-				
 
-				</CardContent>
+
+
+
+					</CardContent>
 
 				</Card>
 
-		</Container>
+			</Container>
 		</div>
 
-    );
+	);
 };
 
- Report.propTypes = {
-    props: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node,
-        PropTypes.string
-    ])
- }
+Report.propTypes = {
+	props: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+		PropTypes.string
+	])
+}
 
 export default Report;
