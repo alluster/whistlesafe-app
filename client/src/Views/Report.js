@@ -142,7 +142,7 @@ const Report = () => {
 										</InputGroup>
 										<InputGroup>
 											<Label>When did this happen?</Label>
-											<Input type="text" placeholder="Ocur time" value={occurTime} onChange={(e) => setOccurTime(e.target.value)} />
+											<Input type="text" placeholder="Occur time" value={occurTime} onChange={(e) => setOccurTime(e.target.value)} />
 										</InputGroup>
 										<InputGroup>
 											<Label>Please provide any important details</Label>
