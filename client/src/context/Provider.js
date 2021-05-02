@@ -11,7 +11,7 @@ const Provider = ({ children }) => {
 	const GetOrg = async () => {
 		await axios.get('/api/organisation', {
 			params: {
-				orgName: "extreme-consulting"
+				orgName: "realia"
 			}
 		})
 			.then(function (response) {

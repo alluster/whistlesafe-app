@@ -32,7 +32,7 @@ const Home = () => {
 	}, [])
 	return (
 		<Suspense fallback={<Spinner />}>
-			<Hero title="Anything on your mind?" ingress="Together we are committed for a safer, equal and transparent work environment. Safety and open culture is in the core of our work. We value respect and safety of everyone affected our business." >
+			<Hero image="https://images.unsplash.com/photo-1552083974-186346191183?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" title="Anything on your mind?" ingress="Together we are committed for a safer, equal and transparent work environment. Safety and open culture is in the core of our work. We value respect and safety of everyone affected our business." >
 				<ButtonRow>
 					<Button to="/report"><h4>Create a new message</h4></Button>
 				</ButtonRow>
