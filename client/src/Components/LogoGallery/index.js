@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { device } from '../../device';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { useState } from 'react/cjs/react.development';
 import axios from 'axios';
 
 const LogoGallery = () => {
-	const [organisations, setOrganisations] = useState([]);
+	const [ organisations, setOrganisations ] = useState();
 
 	const Wrapper = styled.div `
 		display: flex;
@@ -58,6 +56,7 @@ const LogoGallery = () => {
     return(
 			<Wrapper>
 				{
+					organisations ?
 					organisations.map((item, i) => {
 						return(
 							<ImageContainer key={i}>
@@ -69,6 +68,9 @@ const LogoGallery = () => {
 
 						)
 					})
+					
+					:
+					<div></div>
 				}
 				
 

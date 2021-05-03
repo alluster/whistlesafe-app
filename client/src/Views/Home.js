@@ -1,6 +1,5 @@
-import React, { Suspense, useContext, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import Container from '../Components/Container';
-import { AppContext } from '../context/Context';
 
 const Spinner = React.lazy(() => import('../Components/Spinner'));
 const LogoGallery = React.lazy(() => import('../Components/LogoGallery'));
@@ -9,10 +8,7 @@ const HeroHome = React.lazy(() => import('../Components/HeroHome'));
 
 
 const Home = () => {
-	useEffect(() => {
-		return () => {
-		}
-	}, [])
+
 
 	return (
 		<Suspense fallback={<Spinner />}>
