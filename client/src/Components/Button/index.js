@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 
-const Button = ({ onClick, children, className, style, to}) => {
+const Button = ({ onClick, children, className, style, to, href}) => {
 	const { orgColor } = useContext(AppContext)
 	const StyledButton = styled.button`
 	max-width: 200px;
@@ -41,7 +41,7 @@ const Content = styled.div`
 
     return(
 		<Link to={to}>
-			<StyledButton className={className} onClick={onClick} style={style}>
+			<StyledButton href={href} className={className} onClick={onClick} style={style}>
 				<Content>
 					{children}
 				</Content>

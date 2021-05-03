@@ -8,10 +8,10 @@ const Provider = ({ children }) => {
 	const [logoUrl, setLogoUrl] = useState("./logo-dark.svg")
 	const [orgId, setOrgId] = useState()
 
-	const GetOrg = async () => {
+	const GetOrg = async (company) => {
 		await axios.get('/api/organisation', {
 			params: {
-				orgName: "realia"
+				orgName: company
 			}
 		})
 			.then(function (response) {

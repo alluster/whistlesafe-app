@@ -74,8 +74,9 @@ var password = generator.generate({
 });
 
 const Report = () => {
-	const { orgId } = useContext(AppContext);
+	const { orgId, GetOrg } = useContext(AppContext);
 	let history = useHistory();
+	let { company } = useParams();
 
 
 	const [loading, setLoading] = useState(false);
@@ -101,7 +102,7 @@ const Report = () => {
 				}
 			})
 
-				.then(setTimeout(function () { return (setLoading(false), alert("Thank you! Your message has been successfully sent"), history.push('/')) }, 3000))
+				.then(setTimeout(function () { return (setLoading(false), alert("Thank you! Your message has been successfully sent"), history.push(`/${company}`)) }, 3000))
 
 		}
 		catch (error) {
@@ -113,7 +114,8 @@ const Report = () => {
 
 
 	useEffect(() => {
-		console.log(new Date().toUTCString())
+		GetOrg(company)
+		console.log(company)
 	}, [])
 
 

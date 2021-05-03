@@ -54,7 +54,20 @@ app.get('/api/createreport', (req, res) => {
 	});
 });
 
-
+app.get('/api/organisations', (req, res) => {
+	pool.getConnection(function(err, connection) {
+		if (err) throw err; 
+		query = SQL`SELECT * FROM organisations`
+		connection.query(
+			query,
+			function (error, results, fields) {
+				res.send(results)
+				connection.release();
+				if (error) throw error;
+			}
+		);
+	});
+});
 
 
 

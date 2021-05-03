@@ -2,17 +2,25 @@ import React, { useContext, Suspense, useEffect } from 'react';
 import styled from 'styled-components';
 import { device } from '../../device';
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AppContext } from '../../context/Context';
 import { useAuth0 } from "@auth0/auth0-react";
 import Spinner from '../Spinner';
 import Container from '../Container';
+import Button from '../Button';
+import LoginButton from '../LoginButton';
 
 
 const ColorBar = React.lazy(() => import('../ColorBar'));
 
 const TopNav = () => {
+	let { company } = useParams();
 	const { GetOrg, orgColor, logoUrl } = useContext(AppContext);
+console.log(company)
+	const Nav = styled.div`
+		background-color: #ffffff;
+	`;
+
 
 	const Wrapper = styled(Container)`
 		display: flex;
@@ -27,6 +35,8 @@ const TopNav = () => {
 	const NavItem = styled.div`
 		height: 100%;
 		display: flex;
+		padding-left: 20px;
+		padding-right: 20px;
 		justify-content: center;
 		flex-direction: column;
 		:hover {
@@ -59,33 +69,44 @@ const TopNav = () => {
 
 
 	useEffect(() => {
-		GetOrg()
 		return () => {
 		}
 	}, [])
-
+	const LinkHome = () => {
+		if(company === "undefined") { return("/")} else{ return(`/${company}`)}
+	}
 	return (
 		<Suspense fallback={<Spinner />}>
 			<ColorBar orgColor={orgColor} />
-			<Wrapper>
-				<Link to="/">
-					<Logo>
-						<LogoImage src={logoUrl} alt="logo" />
-					</Logo>
-				</Link>
+			<Nav>
+				<Wrapper>
+					{/* <Link to={LinkHome}> */}
+						<Logo>
+							<LogoImage src={logoUrl} alt="logo" />
+						</Logo>
+					{/* </Link> */}
+		
+					<Navigation>
+					
+
+						<NavItem>
+							<h5>Language</h5>
+						</NavItem>
+						<NavItem>
+						<a href="https://whistlesafe.herokuapp.com" >
+								<h5>Login</h5>
+							</a>					
+					
+						</NavItem>
 	
-				<Navigation>
-				
+			
 
-					<NavItem>
-						<h5>Language</h5>
-					</NavItem>
+					</Navigation>
 
 
-				</Navigation>
-
-
-			</Wrapper>
+				</Wrapper>
+			</Nav>
+			
 		</Suspense>
 	);
 };

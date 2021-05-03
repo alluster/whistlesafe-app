@@ -8,14 +8,15 @@ import Overlay from '../Overlay';
 import { AppContext } from '../../context/Context';
 
 const HeroStyled = styled.div`
-	min-height: 400px;
+	min-height: 300px;
 	height: 50vh;
 	z-index: -1;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	@media ${device.mobileM} {
-		min-height: 100vh;
+		min-height: 70vh;
+		text-align: center;
     }
 
 `;
@@ -32,21 +33,20 @@ const TextContainer = styled.div`
 	@media ${device.laptop} {
 		padding-top: 40px;
 		max-width: 900px;
+		text-align: center;
+
 
 	}	
 	`;
 
 
 const Title = styled.h1`
-	color: white;
-	line-height: 60px;
 	letter-spacing: -.5px;
 	font-size: 55px !important;
 	margin: 0px !important;
     font-size:  ${props => props.theme.fontSize.h1}
     @media ${device.laptop} {
-		letter-spacing: -.30px;
-		line-height: 50px;
+		line-height: 60px;
 		hyphens: auto;
 
 
@@ -55,7 +55,6 @@ const Title = styled.h1`
 
 const Ingress = styled.p`
 	font-size: 22px;
-    color: white;
 	letter-spacing: 0.6px;
 	margin-top: 25px;
 	margin-bottom: 30px;
@@ -70,12 +69,16 @@ const Ingress = styled.p`
 
 
 
-const Hero = ({ title, ingress, image, children }) => {
+const HeroHome = ({ title, ingress, image, children }) => {
 
-	const { orgColor } = useContext(AppContext)
 
 	return (
-		<HeroStyled style={{ backgroundImage: `url(${image})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+		<HeroStyled style={{
+			backgroundImage: `url(${image})`,
+			backgroundRepeat: "no-repeat",
+			backgroundSize: "cover",
+			backgroundPosition: "bottom"
+		}}>
 			<Container>
 				<TextContainer>
 					<Title>
@@ -105,14 +108,13 @@ const Hero = ({ title, ingress, image, children }) => {
 
 
 
-			<Overlay themeColor={orgColor} />
 		</HeroStyled>
 
 
 	);
 };
 
-Hero.propTypes = {
+HeroHome.propTypes = {
 	title: PropTypes.string,
 	ingress: PropTypes.string,
 	image: PropTypes.string,
@@ -120,4 +122,4 @@ Hero.propTypes = {
 
 };
 
-export default Hero;
+export default HeroHome;
