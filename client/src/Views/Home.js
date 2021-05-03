@@ -9,10 +9,8 @@ const HeroHome = React.lazy(() => import('../Components/HeroHome'));
 
 
 const Home = () => {
-	const { GetOrg } = useContext(AppContext);
 	useEffect(() => {
 		return () => {
-			GetOrg("")
 		}
 	}, [])
 
