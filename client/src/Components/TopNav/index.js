@@ -8,7 +8,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Spinner from '../Spinner';
 import Container from '../Container';
 import Button from '../Button';
-import LoginButton from '../LoginButton';
 
 
 const ColorBar = React.lazy(() => import('../ColorBar'));
