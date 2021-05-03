@@ -71,9 +71,7 @@ console.log(company)
 		return () => {
 		}
 	}, [])
-	const LinkHome = () => {
-		if(company === "undefined") { return("/")} else{ return(`/${company}`)}
-	}
+
 	return (
 		<Suspense fallback={<Spinner />}>
 			<ColorBar orgColor={orgColor} />
