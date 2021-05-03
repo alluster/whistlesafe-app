@@ -15,7 +15,7 @@ const ColorBar = React.lazy(() => import('../ColorBar'));
 const TopNav = () => {
 	let { company } = useParams();
 	const { GetOrg, orgColor, logoUrl } = useContext(AppContext);
-console.log(company)
+	console.log(company)
 	const Nav = styled.div`
 		background-color: #ffffff;
 	`;
@@ -64,13 +64,10 @@ console.log(company)
 			max-height: 30px;
 		}
 
-	`
+	`;
 
 
-	useEffect(() => {
-		return () => {
-		}
-	}, [])
+
 
 	return (
 		<Suspense fallback={<Spinner />}>
@@ -78,32 +75,32 @@ console.log(company)
 			<Nav>
 				<Wrapper>
 					{/* <Link to={LinkHome}> */}
-						<Logo>
-							<LogoImage src={logoUrl} alt="logo" />
-						</Logo>
+					<Logo>
+						<LogoImage src={logoUrl} alt="logo" />
+					</Logo>
 					{/* </Link> */}
-		
+
 					<Navigation>
-					
+
 
 						<NavItem>
 							<h5>Language</h5>
 						</NavItem>
 						<NavItem>
-						<a href="https://whistlesafe.herokuapp.com" >
+							<a href="https://whistlesafe.herokuapp.com" >
 								<h5>Login</h5>
-							</a>					
-					
+							</a>
+
 						</NavItem>
-	
-			
+
+
 
 					</Navigation>
 
 
 				</Wrapper>
 			</Nav>
-			
+
 		</Suspense>
 	);
 };

@@ -28,7 +28,6 @@ const ButtonRow = styled.div`
 const Company = () => {
 	let { company } = useParams();
 	const { GetOrg } = useContext(AppContext);
-	console.log(company)
 	useEffect(() => {
 		GetOrg(company)
 		return () => {

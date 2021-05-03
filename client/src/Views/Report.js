@@ -13,7 +13,6 @@ import { device } from '../device';
 import Container from '../Components/Container';
 import generator from 'generate-password';
 import Button from '../Components/Button';
-import Hero from '../Components/Hero';
 import { AppContext } from '../context/Context';
 import Spinner from '../Components/Spinner';
 
@@ -27,7 +26,7 @@ const Input = styled.textarea`
 	background-color: #F7F7F7; 
 	margin-top: 10px;
 
-`
+`;
 const Label = styled.label`
   color: #6F6F6F;
   font-size: 12px;
@@ -38,7 +37,7 @@ const InputGroup = styled.div`
   flex-direction: column;
   margin-bottom: 30px;
 
-`
+`;
 
 const Card = styled.div`
 	min-height: 100%;
@@ -80,14 +79,14 @@ const Report = () => {
 
 
 	const [loading, setLoading] = useState(false);
-	const [report, setReport] = useState("")
-	const [occurTime, setOccurTime] = useState("")
-	const [details, setDetails] = useState("")
-	const [reportId, setReportId] = useState(password)
+	const [report, setReport] = useState("");
+	const [occurTime, setOccurTime] = useState("");
+	const [details, setDetails] = useState("");
+	const [reportId, setReportId] = useState(password);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setLoading(true)
+		setLoading(true);
 
 
 		try {
@@ -110,13 +109,12 @@ const Report = () => {
 			console.error(error.message)
 		}
 
-	}
+	};
 
 
 	useEffect(() => {
 		GetOrg(company)
-		console.log(company)
-	}, [])
+	}, []);
 
 
 	return (
