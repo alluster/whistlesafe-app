@@ -1,13 +1,9 @@
-import React, {useEffect, useContext  }from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Container from '../Container';
 import { device } from '../../device';
-import Social from '../Social'
-import { AppContext } from '../../context/Context';
-import Markdown from '../Markdown';
 
 const Footer = () => {
-	const context = useContext(AppContext);
 
 const FooterContent = styled.div`
     width: 100%;
@@ -34,16 +30,9 @@ const Content = styled.div`
 
 `;
 
-const SocialButtons = styled.div`
-	margin-top: 30px;
-`;
 
 
 
-useEffect(() => {
-		// context.GetFooterContent("4g3oxVSEZ0pvZelnhxZVHL",`${context.lang}`)
-		// eslint-disable-next-line
-}, [])
 
     return(
         <FooterContent>
@@ -51,10 +40,7 @@ useEffect(() => {
 				<Content>
 				<Logo src="/logo-dark.svg" alt="Logo"/>
 
-					{/* <Markdown source={context.footerContent.body} /> */}
-					{/* <SocialButtons>
-						<Social />
-					</SocialButtons> */}
+		
 				</Content>
 			</Container>
         </FooterContent>

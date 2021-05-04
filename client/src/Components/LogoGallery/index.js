@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { device } from '../../device';
-import { useState } from 'react/cjs/react.development';
 import axios from 'axios';
 
 const LogoGallery = () => {
@@ -27,12 +26,12 @@ const LogoGallery = () => {
 		text-align: center;
 		width: 200px;
 		padding: 30px;
-	`
+	`;
 	const Image = styled.img`
 		height: 50px;
 
 
-	`
+	`;
 	const GetOrganisations = async () => {
 		await axios.get('/api/organisations')
 			.then(function (response) {
@@ -45,7 +44,7 @@ const LogoGallery = () => {
 			.finally(function () {
 			});
 
-	}
+	};
 	useEffect(() => {
 		GetOrganisations()
 		return () => {

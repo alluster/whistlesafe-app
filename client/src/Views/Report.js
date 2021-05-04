@@ -101,7 +101,12 @@ const Report = () => {
 				}
 			})
 
-				.then(setTimeout(function () { return (setLoading(false), alert("Thank you! Your message has been successfully sent"), history.push(`/${company}`)) }, 3000))
+				.then(
+				
+						setLoading(false),
+						alert("Thank you! Your message has been successfully sent"),
+						history.push(`/${company}`)
+					)
 
 		}
 		catch (error) {

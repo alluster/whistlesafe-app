@@ -22,7 +22,7 @@ const Home = () => {
 				<h1 style={{ textAlign: "center", paddingTop: "50px" }} >Easy to report violations trough Whistlesafe reporting tool</h1>
 				<h4 style={{ textAlign: "center", paddingTop: "50px" }}>As you submit a violation report on Whistlesafe, we notify the organisation of your selection. A report is sent for them to take action and to inform you about progress of your reporting.  </h4>
 				<h4 style={{ textAlign: "center", paddingTop: "50px" }}>Organisations listed in the Whistlesafe network:</h4>
-				{/* <LogoGallery style={{ marginTop: "50px" }} /> */}
+				<LogoGallery style={{ marginTop: "50px" }} />
 
 			</Container>
 		</Suspense>
