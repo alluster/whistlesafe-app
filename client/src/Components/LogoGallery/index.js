@@ -12,7 +12,7 @@ const LogoGallery = (props) => {
 		margin-right: auto;
 		margin-bottom: 300px;
 		flex-direction: row;
-		margin-top: 300px;
+		margin-top: 150px;
 		flex-wrap: wrap;
 			@media ${device.mobileL} {
 

@@ -1,13 +1,11 @@
 require('dotenv').config()
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5000;
 const sslRedirect = require('heroku-ssl-redirect');
 const bodyParser = require('body-parser')
 const path = require('path')
 const mysql = require('mysql');
 const SQL = require('sql-template-strings')
-const axios = require('axios');
 
 app.use(sslRedirect());
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -26,9 +24,8 @@ const pool = mysql.createPool({
 app.get('/api/organisation', (req, res) => {
 	pool.getConnection(function(err, connection) {
 		if (err) throw err; 
-		query = SQL`SELECT * FROM organisations WHERE org_name=${req.query.orgName}`
-		connection.query(
-			query,
+		connection.query
+		("SELECT * FROM organisations WHERE org_name = ?", [req.query.orgName],
 			function (error, results, fields) {
 				res.send(results)
 				connection.release();

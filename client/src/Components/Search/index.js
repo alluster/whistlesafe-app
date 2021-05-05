@@ -51,7 +51,7 @@ const Loader = styled.div`
 const SearchButton = styled(Button) `
 	@media ${device.mobileL} {
 		width: calc(100% - 40px)!important;
-		
+		margin-top: 10px;		
 
 	}
 `;
@@ -93,7 +93,7 @@ const Search = (props) => {
 								</SearchButton>
 								:
 								<SearchButton disabled={true} style={{ flex: 1 }} to="">
-									Select your organisation
+									Please select organisation
 								</SearchButton>
 						}
 
