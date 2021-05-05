@@ -1,50 +1,34 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Container from '../Container';
 import PropTypes from 'prop-types';
 import { device } from '../../device';
 import ClipLoader from "react-spinners/ClipLoader";
-import Overlay from '../Overlay';
-import { AppContext } from '../../context/Context';
+
 
 const HeroStyled = styled.div`
 	min-height: 300px;
 	height: 50vh;
+	
 	z-index: -1;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	@media ${device.mobileM} {
 		min-height: 70vh;
-		text-align: center;
     }
 
 `;
 
 
 
-const TextContainer = styled.div`
-	max-width: 900px;
-	margin-left: auto;
-	margin-right: auto;
-	z-index: 9999;
-	display: flex;
-	flex-direction: column;
-	@media ${device.laptop} {
-		padding-top: 40px;
-		max-width: 900px;
-		text-align: center;
 
-
-	}	
-	`;
 
 
 const Title = styled.h1`
 	letter-spacing: -.5px;
-	font-size: 55px !important;
-	margin: 0px !important;
-    font-size:  ${props => props.theme.fontSize.h1}
+	font-size:  ${props => props.theme.fontSize.h1}
+	text-align: center;
     @media ${device.laptop} {
 		line-height: 60px;
 		hyphens: auto;
@@ -58,6 +42,8 @@ const Ingress = styled.p`
 	letter-spacing: 0.6px;
 	margin-top: 25px;
 	margin-bottom: 30px;
+	text-align: center;
+
     @media ${device.laptop} {
         font-size: 18px;
 		margin-top: 10px;
@@ -80,7 +66,6 @@ const HeroHome = ({ title, ingress, image, children }) => {
 			backgroundPosition: "bottom"
 		}}>
 			<Container>
-				<TextContainer>
 					<Title>
 						{title ?
 							title
@@ -102,7 +87,6 @@ const HeroHome = ({ title, ingress, image, children }) => {
 						{ingress}
 					</Ingress>
 					{children}
-				</TextContainer>
 			</Container>
 
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { device } from '../../device';
 
 const Wrapper = styled.div`
-z-index: 1000;
+	z-index: 1000;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;

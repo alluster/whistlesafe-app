@@ -6,7 +6,7 @@ import axios from 'axios';
 const Provider = ({ children }) => {
 	const [orgColor, setOrgColor] = useState("#000")
 	const [logoUrl, setLogoUrl] = useState("./logo-dark.svg")
-	const [orgId, setOrgId] = useState()
+	const [orgId, setOrgId] = useState("")
 
 	const GetOrg = async (company) => {
 		await axios.get('/api/organisation', {
@@ -16,9 +16,19 @@ const Provider = ({ children }) => {
 		})
 			.then(function (response) {
 				let data = response.data[0]
-				setOrgColor(data.org_color)
-				setLogoUrl(data.logo_url)
-				setOrgId(data.org_id)
+				try { setOrgColor(data.org_color)} 
+					catch (error) {
+						setOrgColor("#000")
+					}
+				try { setLogoUrl(data.logo_url)} 
+					catch (error) {
+						setLogoUrl("./logo-dark.svg")
+					}
+				try { setOrgId(data.org_id)} 
+					catch (error) {
+						setOrgId("")
+					}
+				
 			})
 			.catch(function (error) {
 				console.log(error);

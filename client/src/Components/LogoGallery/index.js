@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { device } from '../../device';
-import axios from 'axios';
 
-const LogoGallery = () => {
-	const [ organisations, setOrganisations ] = useState();
+const LogoGallery = (props) => {
 
 	const Wrapper = styled.div `
 		display: flex;
@@ -14,7 +12,7 @@ const LogoGallery = () => {
 		margin-right: auto;
 		margin-bottom: 300px;
 		flex-direction: row;
-		height: 50px;
+		margin-top: 300px;
 		flex-wrap: wrap;
 			@media ${device.mobileL} {
 
@@ -32,31 +30,15 @@ const LogoGallery = () => {
 
 
 	`;
-	const GetOrganisations = async () => {
-		await axios.get('/api/organisations')
-			.then(function (response) {
-				let data = response.data
-				setOrganisations(data)
-			})
-			.catch(function (error) {
-				console.log(error);
-			})
-			.finally(function () {
-			});
 
-	};
-	useEffect(() => {
-		GetOrganisations()
-		return () => {
-			
-		}
-	}, [])
 
     return(
+
 			<Wrapper>
+
 				{
-					organisations ?
-					organisations.map((item, i) => {
+					props.organisations ?
+					props.organisations.map((item, i) => {
 						return(
 							<ImageContainer key={i}>
 								<a href={`/${item.org_name}`}>

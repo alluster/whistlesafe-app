@@ -1,5 +1,5 @@
 import React, { useContext }from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { device } from '../../device';
 import { AppContext } from '../../context/Context';
 import {
@@ -7,19 +7,28 @@ import {
 } from 'react-router-dom';
 
 
-const Button = ({ onClick, children, className, style, to, href}) => {
+const Button = ({ onClick, children, className, style, to, href, disabled}) => {
 	const { orgColor } = useContext(AppContext)
 	const StyledButton = styled.button`
-	max-width: 200px;
+	${props => {
+        if (disabled) return css`
+			background-color: ${props => props.theme.colors.disabled};
+
+        `;
+        
+		return css`
+			background-color: ${orgColor}
+        `;
+    }}
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	height: 45px;
+	height: 50px;
 	padding-right: 20px;
 	padding-left: 20px;
 	border-radius: 4px;
-	background-color: ${orgColor}
+	white-space: nowrap;
 	@media ${device.laptop} {
 		
 		}
@@ -27,8 +36,8 @@ const Button = ({ onClick, children, className, style, to, href}) => {
 `;
 
 const Content = styled.div`
-	max-width: 200px;
 	color: white;
+	white-space: nowrap;
 
 	
 
@@ -45,7 +54,7 @@ const Content = styled.div`
 				<Content>
 					{children}
 				</Content>
-        </StyledButton>
+        	</StyledButton>
 		</Link>
 
     );

@@ -1,21 +1,16 @@
-import React, { useContext, Suspense, useEffect } from 'react';
+import React, { useContext, Suspense } from 'react';
 import styled from 'styled-components';
 import { device } from '../../device';
 
-import { Link, useParams } from "react-router-dom";
 import { AppContext } from '../../context/Context';
-import { useAuth0 } from "@auth0/auth0-react";
 import Spinner from '../Spinner';
 import Container from '../Container';
-import Button from '../Button';
 
 
 const ColorBar = React.lazy(() => import('../ColorBar'));
 
 const TopNav = () => {
-	let { company } = useParams();
 	const { GetOrg, orgColor, logoUrl } = useContext(AppContext);
-	console.log(company)
 	const Nav = styled.div`
 		background-color: #ffffff;
 	`;
