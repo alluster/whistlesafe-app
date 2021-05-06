@@ -7,7 +7,7 @@ const Spinner = React.lazy(() => import('../Components/Spinner'));
 const LogoGallery = React.lazy(() => import('../Components/LogoGallery'));
 const HeroHome = React.lazy(() => import('../Components/HeroHome'));
 const Search = React.lazy(() => import('../Components/Search'));
-const TopNav = React.lazy(() => import('../Components/TopNav'));
+import TopNav from '../Components/TopNav';
 
 
 

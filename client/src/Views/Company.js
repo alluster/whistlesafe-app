@@ -13,8 +13,8 @@ import Container from '../Components/Container';
 import Hero from '../Components/Hero';
 import Button from '../Components/Button';
 import { AppContext } from '../context/Context';
+import TopNavReport from '../Components/TopNavReport';
 const Spinner = React.lazy(() => import('../Components/Spinner'));
-const TopNavReport = React.lazy(() => import('../Components/TopNavReport'));
 
 const ButtonRow = styled.div`
 	display: flex;

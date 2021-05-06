@@ -18,7 +18,7 @@ import { AppContext } from '../context/Context';
 import Spinner from '../Components/Spinner';
 import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import fi from 'date-fns/locale/fi';
-const TopNavReport = React.lazy(() => import('../Components/TopNavReport'));
+import TopNavReport from '../Components/TopNavReport';
 
 registerLocale('fi', fi)
 
