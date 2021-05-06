@@ -98,7 +98,7 @@ const Report = () => {
 					report: report,
 					occurTime: occurTime,
 					dateAdded: new Date().toUTCString(),
-					details: details,
+					reportDetails: details,
 					orgId: orgId
 				}
 			})
