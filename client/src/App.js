@@ -15,7 +15,6 @@ import Provider from './context/Provider';
 const Report = React.lazy(() => import('./Views/Report'));
 const Company = React.lazy(() => import('./Views/Company'));
 const Home = React.lazy(() => import('./Views/Home'));
-const TopNav = React.lazy(() => import('./Components/TopNav'));
 
 
 
@@ -26,7 +25,6 @@ const App = () => {
 				<Provider>
 					<Router>
 
-						<TopNav/>
 						<Switch>
 							<Route exact path="/" component={Home} />
 

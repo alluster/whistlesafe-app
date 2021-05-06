@@ -18,6 +18,8 @@ import { AppContext } from '../context/Context';
 import Spinner from '../Components/Spinner';
 import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import fi from 'date-fns/locale/fi';
+const TopNavReport = React.lazy(() => import('../Components/TopNavReport'));
+
 registerLocale('fi', fi)
 
 const Input = styled.textarea`
@@ -141,7 +143,7 @@ const Report = () => {
 
 	return (
 		<div>
-
+			<TopNavReport />
 			<Container>
 				<Card>
 					<CardContent>
@@ -166,6 +168,7 @@ const Report = () => {
 										<InputGroup>
 											<Label>When did this happen?</Label>
 											<Picker        
+							
 												showTimeSelect dateFormat="Pp" 
 												locale="fi" selected={startDate} 
 												onChange={date => setStartDate(date)} 
