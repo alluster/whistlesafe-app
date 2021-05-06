@@ -49,14 +49,13 @@ app.get('/api/createreport', (req, res) => {
 		const encryptedReportDetails = cryptr.encrypt(req.query.reportDetails);
 
 			connection.query(
-				"INSERT INTO reports (report, date_added, occur_time, report_description, report_id, report_password, org_id) VALUES (?, ?, ?, ?, ?, ?, ?)", [encryptedReport, req.query.dateAdded, req.query.occurTime, encryptedReportDetails, req.query.reportId, req.query.reportId, req.query.orgId],
+				"INSERT INTO reports (report, date_added, occur_time, report_details, report_id, report_password, org_id) VALUES (?, ?, ?, ?, ?, ?, ?)", [encryptedReport, req.query.dateAdded, req.query.occurTime, encryptedReportDetails, req.query.reportId, req.query.reportId, req.query.orgId],
 				function (error, results, fields) {
 					res.send(results)
 					connection.release();
 					if (error) throw error;
 				}
 			);
-
 	});
 });
 

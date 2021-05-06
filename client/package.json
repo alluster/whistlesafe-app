@@ -28,6 +28,7 @@
 		"react": "^16.14.0",
 		"react-animate-on-scroll": "^2.1.5",
 		"react-cookie-consent": "^5.2.0",
+		"react-datepicker": "^3.8.0",
 		"react-dom": "^16.14.0",
 		"react-flex": "^2.2.8",
 		"react-flexbox-grid": "^2.1.2",

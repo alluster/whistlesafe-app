@@ -8,14 +8,17 @@ import {
 	useParams
 } from "react-router-dom";
 import { device } from '../device';
-
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 import Container from '../Components/Container';
 import generator from 'generate-password';
 import Button from '../Components/Button';
 import { AppContext } from '../context/Context';
 import Spinner from '../Components/Spinner';
-
+import { registerLocale, setDefaultLocale } from  "react-datepicker";
+import fi from 'date-fns/locale/fi';
+registerLocale('fi', fi)
 
 const Input = styled.textarea`
 	height: 40px;
@@ -25,6 +28,17 @@ const Input = styled.textarea`
 	line-height: 40px;
 	background-color: #F7F7F7; 
 	margin-top: 10px;
+
+`;
+const Picker = styled(DatePicker)`
+	height: 40px;
+	border: #DADADA solid 1px;
+	border-radius: 2px;
+	padding-left: 20px;
+	line-height: 40px;
+	background-color: #F7F7F7; 
+	margin-top: 10px;
+	width: calc(100% - 20px);
 
 `;
 const Label = styled.label`
@@ -73,6 +87,7 @@ var password = generator.generate({
 });
 
 const Report = () => {
+	const [startDate, setStartDate] = useState(new Date());
 	const { orgId, GetOrg } = useContext(AppContext);
 	let history = useHistory();
 	let { company } = useParams();
@@ -89,14 +104,14 @@ const Report = () => {
 		e.preventDefault();
 		setLoading(true);
 
-
+	
 		try {
 			return await axios.get('/api/createreport', {
 				params: {
 					reportId: reportId,
 					reportPassword, reportPassword,
 					report: report,
-					occurTime: occurTime,
+					occurTime: startDate,
 					dateAdded: new Date().toUTCString(),
 					reportDetails: details,
 					orgId: orgId
@@ -150,8 +165,14 @@ const Report = () => {
 										</InputGroup>
 										<InputGroup>
 											<Label>When did this happen?</Label>
-											<Input type="text" placeholder="Occur time" value={occurTime} onChange={(e) => setOccurTime(e.target.value)} />
+											<Picker        
+												showTimeSelect dateFormat="Pp" 
+												locale="fi" selected={startDate} 
+												onChange={date => setStartDate(date)} 
+											/>			
 										</InputGroup>
+																		
+										
 										<InputGroup>
 											<Label>Please provide any important details</Label>
 											<Input type="text" placeholder="Details" value={details} onChange={(e) => setDetails(e.target.value)} />
@@ -160,8 +181,8 @@ const Report = () => {
 
 
 										<Button to="/" variant="primary" type="submit" onClick={e => handleSubmit(e)}>
-											Send private messsage
-				</Button>
+											Send private message
+								</Button>
 									</form>
 								</div>
 								:
