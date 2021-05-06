@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const mysql = require('mysql');
 const SQL = require('sql-template-strings')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 app.use(sslRedirect());
 app.use(express.static(path.join(__dirname, 'client/build')));
@@ -24,6 +26,7 @@ const pool = mysql.createPool({
 app.get('/api/organisation', (req, res) => {
 	pool.getConnection(function(err, connection) {
 		if (err) throw err; 
+		
 		connection.query
 		("SELECT * FROM organisations WHERE org_name = ?", [req.query.orgName],
 			function (error, results, fields) {
@@ -39,17 +42,21 @@ app.get('/api/organisation', (req, res) => {
 app.get('/api/createreport', (req, res) => {
 	pool.getConnection(function(err, connection) {
 		if (err) throw err; 
-		query = SQL`INSERT INTO reports (report, date_added, occur_time, report_description, report_id, org_id) VALUES (${req.query.report},${req.query.dateAdded},${req.query.occurTime},${req.query.details},${req.query.reportId},${req.query.orgId})`	
-		connection.query(
-			query,
-			function (error, results, fields) {
-				res.send(results)
-				connection.release();
-				if (error) throw error;
-			}
-		);
+		bcrypt.hash(req.query.reportPassword, saltRounds, function(err, hash) {
+			connection.query(
+				"INSERT INTO reports (report, date_added, occur_time, report_description, report_id, report_password, org_id) VALUES (?, ?, ?, ?, ?, ?, ?)", [req.query.report, req.query.dateAdded, req.query.occurTime, req.query.details, req.query.reportId, hash, req.query.orgId],
+				function (error, results, fields) {
+					res.send(results)
+					connection.release();
+					if (error) throw error;
+				}
+			);
+		});	
+
 	});
 });
+
+
 
 app.get('/api/organisations', (req, res) => {
 	pool.getConnection(function(err, connection) {

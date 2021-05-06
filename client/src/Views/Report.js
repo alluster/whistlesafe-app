@@ -83,6 +83,7 @@ const Report = () => {
 	const [occurTime, setOccurTime] = useState("");
 	const [details, setDetails] = useState("");
 	const [reportId, setReportId] = useState(password);
+	const [reportPassword, setReportPassword] = useState(password);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -93,6 +94,7 @@ const Report = () => {
 			return await axios.get('/api/createreport', {
 				params: {
 					reportId: reportId,
+					reportPassword, reportPassword,
 					report: report,
 					occurTime: occurTime,
 					dateAdded: new Date().toUTCString(),
