@@ -70,7 +70,7 @@ const Search = (props) => {
 					<SearchContainer>
 
 						<Select value={select} onChange={handleChange} >
-							<option value="0">Select your organisation</option>
+							<option value="0">{props.placeholder}</option>
 
 							{
 
@@ -89,11 +89,11 @@ const Search = (props) => {
 						{
 							select.value ?
 								<SearchButton style={{ flex: 1 }} to={`/${select.value}`}>
-									Go to {select.value} reporting
+									{props.buttonText} {select.value}
 								</SearchButton>
 								:
 								<SearchButton disabled={true} style={{ flex: 1 }} to="">
-									Please select organisation
+									{props.buttonText}
 								</SearchButton>
 						}
 

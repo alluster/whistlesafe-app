@@ -12,7 +12,7 @@ const Search = React.lazy(() => import('../Components/Search'));
 
 
 const Home = () => {
-	const { GetOrg } = useContext(AppContext);
+	const { GetOrg, i18n, lang, t } = useContext(AppContext);
 	const [ organisations, setOrganisations ] = useState();
 
 	const GetOrganisations = async () => {
@@ -29,8 +29,9 @@ const Home = () => {
 
 	};
 	useEffect(() => {
-		GetOrganisations()
-		GetOrg("")
+		i18n.changeLanguage(lang);
+		GetOrganisations();
+		GetOrg("");
 		return () => {
 			
 		}
@@ -40,10 +41,16 @@ const Home = () => {
 			<TopNav />
 			<HeroHome
 				image="/hero-bg.svg"
-				title="Something on your mind?"
-				ingress="Whistlesafe is an EU whistleblow directive applicable reporting service."
+				title={t('page.home.hero.title')}
+				ingress={t('page.home.hero.ingress')}
 			>
-				<Search organisations={organisations}/>
+				
+				<Search 
+					organisations={organisations}
+					placeholder={t('page.home.search.placeholder')}
+					buttonText={t('page.home.search.button')}
+
+				/>
 
 			</HeroHome>
 			

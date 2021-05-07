@@ -5,12 +5,20 @@ import { device } from '../../device';
 import { AppContext } from '../../context/Context';
 import Spinner from '../Spinner';
 import Container from '../Container';
+import Flag from 'react-world-flags'
 
 
 const ColorBar = React.lazy(() => import('../ColorBar'));
 
 const TopNavReport = () => {
-	const { GetOrg, orgColor, logoUrl } = useContext(AppContext);
+	const { GetOrg, orgColor, logoUrl, setLang } = useContext(AppContext);
+	const LocaleSelector = (locale) => {
+		localStorage.setItem('lang', locale);
+		setLang(locale)
+		window.location.reload();
+	}
+
+
 	const Nav = styled.div`
 		background-color: #ffffff;
 	`;
@@ -34,7 +42,7 @@ const TopNavReport = () => {
 		justify-content: center;
 		flex-direction: column;
 		:hover {
-			background-color: ${props => props.theme.colors.background};
+			// background-color: ${props => props.theme.colors.background};
 			cursor: pointer;
 		}
 
@@ -60,7 +68,19 @@ const TopNavReport = () => {
 		}
 
 	`;
+const LanguageSelector = styled.div`
+		display: flex;
+		justify-content:center;
+		align-items: center;
 
+`;
+	const StyledFlag = styled(Flag)`
+	max-height: 15px !important;
+	padding: 30px;
+	:hover{
+		cursor: pointer;
+	}
+`;
 
 
 
@@ -78,11 +98,13 @@ const TopNavReport = () => {
 					<Navigation>
 
 
-						{/* <NavItem>
-							<h5>Language</h5>
-						</NavItem> */}
-					
-
+						<NavItem>
+							<LanguageSelector>
+								<StyledFlag code="fi" onClick={() => LocaleSelector("fi")} />
+								<StyledFlag code="gb" onClick={() => LocaleSelector("en-US")} />
+							</LanguageSelector>
+						</NavItem>
+						
 
 
 					</Navigation>

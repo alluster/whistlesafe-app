@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { AppContext } from './Context';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 const Provider = ({ children }) => {
 	const [orgColor, setOrgColor] = useState("#000")
 	const [logoUrl, setLogoUrl] = useState("./logo-dark.svg")
 	const [orgId, setOrgId] = useState("")
+	const { t, i18n } = useTranslation();
+	const [lang, setLang] = useState(localStorage.getItem('lang') || 'en-US')
 
 	const GetOrg = async (company) => {
 		await axios.get('/api/organisation', {
@@ -49,6 +52,10 @@ const Provider = ({ children }) => {
 				logoUrl,
 				orgId,
 				GetOrg,
+				lang,
+					setLang,					
+					i18n,
+					t
 
 			}}
 		>
