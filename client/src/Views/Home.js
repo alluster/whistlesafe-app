@@ -2,12 +2,12 @@ import React, { Suspense, useState, useEffect, useContext } from 'react';
 import Container from '../Components/Container';
 import axios from 'axios';
 import { AppContext } from '../context/Context';
+import TopNav from '../Components/TopNav';
 
 const Spinner = React.lazy(() => import('../Components/Spinner'));
 const LogoGallery = React.lazy(() => import('../Components/LogoGallery'));
 const HeroHome = React.lazy(() => import('../Components/HeroHome'));
 const Search = React.lazy(() => import('../Components/Search'));
-import TopNav from '../Components/TopNav';
 
 
 
