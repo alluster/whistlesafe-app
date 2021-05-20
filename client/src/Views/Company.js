@@ -9,7 +9,6 @@ import {
 import styled from 'styled-components';
 import { device } from '../device';
 
-import Container from '../Components/Container';
 import Hero from '../Components/Hero';
 import Button from '../Components/Button';
 import { AppContext } from '../context/Context';
