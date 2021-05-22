@@ -48,6 +48,14 @@
 		"report-details": {
 			"label": "Anna lisätietoja",
 			"placeholder": "Lisätiedot"
+		},
+		"login-id": {
+			"label": "Ilmoituksen tunnus",
+			"placeholder": "Tunnus"
+		},
+		"login-password": {
+			"label": "Ilmoituksen salasana",
+			"placeholder": "Salasana"
 		}
 		
 	},
@@ -72,10 +80,25 @@
 			"ingress": "Olet ilmoittamassa Whistlesafe palveluun epäkohdasta organisaatiossa.",
 			"body": "Ole hyvä ja täytä raportti tarkasti. Anna mahdollisimman paljon tietoa ilmoitukseesi liittyen, mutta vältä antamasta tietoja jotka voidaan liittää sinuun. Antamasi ilmoitus käsitellään luottamuksellisesti, mutta mikäli täytät henkilökohtaista tietoa palveluun emme voi taata täydellistä yksityisyytesi suojaa."
 		},
+		"follow-report": {
+			"title": "Ilmoituksesi",
+			"ingress": "Olet luonut tämän ilmoituksen Whistlesafe palveluun.",
+			"body": "Ole hyvä ja tarkasta että kaikki antamasi tiedot ovat oikein."
+		},
+		"report-chat": {
+			"title": "Keskustele käsittelijän kanssa",
+			"ingress": "Voit lähettää anonyymejä viestejä tämän ilmoituksen käsittelijälle.",
+			"body": "Huomaathan että ilmoitamme saapuneista viesteistä ainoastaan tässä ilmoituksen seurantajärjestelmässä. Käythän säännöllisesti tarkastamassa uudet viestisi."
+		},
 		"report-id-password": {
 			"title": "Huomio",
 			"ingress": "Seurataksesi ilmoituksen kulkua sinun tulee tallentaa nämä tunnukset turvaan",
 			"body": "Kun haluat seurata ilmoituksesi kehitystä, sinulta kysytään nämä tunnukset. Mikäli kadotat tunnuksesi, emme anna tilalle uusia. Mikäli kadotat tunnuksesi voit kuitenkin luoda uudet ilmoituksen. Huomioi että tunnus ja salasana vaihtuvat aina kun selain päivitetään."
+		},
+		"login": {
+			"title": "Kirjaudu",
+			"ingress": "Ole hyvä ja käytä saamaasi imoituksen tunnusta ja salasanaa kirjautuaksesi.",
+			"body": "Jos ole hukannut tunnukset ole hyvä ja täytä uusi ilmoitus. Emme anna uusia tunnuksia ilmoituksiin."
 		}
 	},
 	

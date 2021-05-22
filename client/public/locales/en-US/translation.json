@@ -48,8 +48,16 @@
 		"report-details": {
 			"label": "Please provide details",
 			"placeholder": "Details"
+		},
+		"login-id": {
+			"label": "Report ID",
+			"placeholder": "ID"
+		},
+		"login-password": {
+			"label": "Report password",
+			"placeholder": "Password"
 		}
-		
+	
 	},
 	"banner": {
 		"intro": {
@@ -72,10 +80,25 @@
 			"ingress": "You are about to submit a new report to Whistlesafe service",
 			"body": "Please fill the report form as accurately as you can. Please do not enter any information that can compromise your privacy. The report will be handled privately but we cannot guarantee your complete privacy in case of receiving identifiable information."
 		},
+		"follow-report": {
+			"title": "Your report",
+			"ingress": "You have submitted this report to the Whistlesafe service",
+			"body": "Please view your report and make sure all the information you have submitted is correct."
+		},
+		"report-chat": {
+			"title": "Chat with the report handler",
+			"ingress": "You can anonymously send messages to the handler of this report.",
+			"body": "Please note that you will not be informed in case a new message has arrived to the service due to security reasons. Please visit your report regularily."
+		},
 		"report-id-password": {
 			"title": "Please note",
 			"ingress": "In order to follow up your report save these credentials somewhere safe",
 			"body": "You will be asked to provide message ID and password that was generated when your message was sent. We do not provide new credentials however in case you loose these credentials you can submit a new report. Note that every time the browser is refreshed the ID and password will be changed. "
+		},
+		"login": {
+			"title": "Login",
+			"ingress": "Please login with credentials given when a report was submitted",
+			"body": "In case you have lost these credentials please file in a new report. We cannot provide you with new credentials."
 		}
 	},
 	

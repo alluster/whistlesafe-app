@@ -11,10 +11,12 @@ import Spinner from './Components/Spinner';
 import Footer from './Components/Footer';
 
 import Provider from './context/Provider';
+import FollowReport from './Views/FollowReport';
 // Views
 const Report = React.lazy(() => import('./Views/Report'));
 const Company = React.lazy(() => import('./Views/Company'));
 const Home = React.lazy(() => import('./Views/Home'));
+
 
 
 
@@ -27,8 +29,8 @@ const App = () => {
 
 						<Switch>
 							<Route exact path="/" component={Home} />
-
-							<Route  exact path="/:company" component={Company} />
+							<Route path="/followreport/:company" component={FollowReport} />
+							<Route exact path="/:company" component={Company} />
 							<Route path="/report/:company" component={Report} />
 						</Switch>	
 						<Footer />
