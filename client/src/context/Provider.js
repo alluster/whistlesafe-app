@@ -19,19 +19,19 @@ const Provider = ({ children }) => {
 		})
 			.then(function (response) {
 				let data = response.data[0]
-				try { setOrgColor(data.org_color)} 
-					catch (error) {
-						setOrgColor("#000")
-					}
-				try { setLogoUrl(data.logo_url)} 
-					catch (error) {
-						setLogoUrl("./logo-dark.svg")
-					}
-				try { setOrgId(data.org_id)} 
-					catch (error) {
-						setOrgId("")
-					}
-				
+				try { setOrgColor(data.org_color) }
+				catch (error) {
+					setOrgColor("#000")
+				}
+				try { setLogoUrl(data.logo_url) }
+				catch (error) {
+					setLogoUrl("./logo-dark.svg")
+				}
+				try { setOrgId(data.org_id) }
+				catch (error) {
+					setOrgId("")
+				}
+
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -53,9 +53,9 @@ const Provider = ({ children }) => {
 				orgId,
 				GetOrg,
 				lang,
-					setLang,					
-					i18n,
-					t
+				setLang,
+				i18n,
+				t
 
 			}}
 		>

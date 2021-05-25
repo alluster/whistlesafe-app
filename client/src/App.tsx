@@ -11,7 +11,6 @@ import Spinner from './Components/Spinner';
 import Footer from './Components/Footer';
 
 import Provider from './context/Provider';
-import FollowReport from './Views/FollowReport';
 // Views
 const Report = React.lazy(() => import('./Views/Report'));
 const Company = React.lazy(() => import('./Views/Company'));
@@ -26,10 +25,8 @@ const App = () => {
 			<ThemeProvider theme={theme}>
 				<Provider>
 					<Router>
-
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route path="/followreport/:company" component={FollowReport} />
 							<Route exact path="/:company" component={Company} />
 							<Route path="/report/:company" component={Report} />
 						</Switch>	

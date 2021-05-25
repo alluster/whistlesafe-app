@@ -30,8 +30,7 @@ const Company = () => {
 	useEffect(() => {
 		GetOrg(company);
 		i18n.changeLanguage(lang);
-		return () => {
-		}
+
 	}, [])
 	return (
 		<Suspense fallback={<Spinner />}>

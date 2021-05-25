@@ -179,7 +179,6 @@ const Report = () => {
 										<InputGroup>
 											<Label>{t('input.time-of-occur.label')}</Label>
 											<Picker
-
 												showTimeSelect dateFormat="Pp"
 												locale="fi" selected={startDate}
 												onChange={date => setStartDate(date)}
@@ -194,7 +193,7 @@ const Report = () => {
 
 
 										<Banner
-											
+
 											title={t('banner.report-id-password.title')}
 											ingress={t('banner.report-id-password.ingress')}
 											body={t('banner.report-id-password.body')}
@@ -207,7 +206,7 @@ const Report = () => {
 												{t('button.send')}
 											</Button>
 										</Banner>
-										
+
 									</form>
 								</div>
 								:
