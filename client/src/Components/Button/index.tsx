@@ -10,9 +10,10 @@ interface Props {
 	to: string,
 	disabled: boolean,
 	className: string,
-	style: {}
+	style: {},
+	href: string
 }
-const Button = ({ onClick, children, className, style, to, disabled}: Props) => {
+const Button = ({ onClick, children, className, style, to, href, disabled}: Props) => {
 	const { orgColor } = useContext(AppContext)
 	const StyledButton = styled.button`
 		${props => {

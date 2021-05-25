@@ -29,6 +29,8 @@ const App = () => {
 							<Route exact path="/" component={Home} />
 							<Route exact path="/:company" component={Company} />
 							<Route path="/report/:company" component={Report} />
+							<Route exact path="/followreport/:company" render={() => (window.location = "https://dashboard.whistlesafe.eu/followreport")} />
+
 						</Switch>	
 						<Footer />
 
