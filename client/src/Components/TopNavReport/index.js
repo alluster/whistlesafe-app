@@ -10,7 +10,7 @@ import Flag from 'react-world-flags'
 
 const ColorBar = React.lazy(() => import('../ColorBar'));
 
-const TopNav = () => {
+const TopNavReport = () => {
 	const { GetOrg, orgColor, logoUrl, setLang } = useContext(AppContext);
 	const LocaleSelector = (locale) => {
 		localStorage.setItem('lang', locale);
@@ -104,13 +104,7 @@ const LanguageSelector = styled.div`
 								<StyledFlag code="gb" onClick={() => LocaleSelector("en-US")} />
 							</LanguageSelector>
 						</NavItem>
-						<NavItem>
-							<a href="https://dashboard.whistlesafe.eu" >
-								<h5>Login</h5>
-							</a>
-
-						</NavItem>
-
+						
 
 
 					</Navigation>
@@ -123,4 +117,4 @@ const LanguageSelector = styled.div`
 	);
 };
 
-export default TopNav;
+export default TopNavReport;

@@ -15,7 +15,7 @@ import Provider from './context/Provider';
 const Report = React.lazy(() => import('./Views/Report'));
 const Company = React.lazy(() => import('./Views/Company'));
 const Home = React.lazy(() => import('./Views/Home'));
-const TopNav = React.lazy(() => import('./Components/TopNav'));
+
 
 
 
@@ -25,12 +25,9 @@ const App = () => {
 			<ThemeProvider theme={theme}>
 				<Provider>
 					<Router>
-
-						<TopNav/>
 						<Switch>
 							<Route exact path="/" component={Home} />
-
-							<Route  exact path="/:company" component={Company} />
+							<Route exact path="/:company" component={Company} />
 							<Route path="/report/:company" component={Report} />
 						</Switch>	
 						<Footer />

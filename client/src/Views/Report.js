@@ -8,14 +8,20 @@ import {
 	useParams
 } from "react-router-dom";
 import { device } from '../device';
-
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 import Container from '../Components/Container';
 import generator from 'generate-password';
 import Button from '../Components/Button';
 import { AppContext } from '../context/Context';
 import Spinner from '../Components/Spinner';
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import fi from 'date-fns/locale/fi';
+import TopNavReport from '../Components/TopNavReport';
+import Banner from '../Components/Banner';
 
+registerLocale('fi', fi)
 
 const Input = styled.textarea`
 	height: 40px;
@@ -25,6 +31,17 @@ const Input = styled.textarea`
 	line-height: 40px;
 	background-color: #F7F7F7; 
 	margin-top: 10px;
+
+`;
+const Picker = styled(DatePicker)`
+	height: 40px;
+	border: #DADADA solid 1px;
+	border-radius: 2px;
+	padding-left: 20px;
+	line-height: 40px;
+	background-color: #F7F7F7; 
+	margin-top: 10px;
+	width: calc(100% - 20px);
 
 `;
 const Label = styled.label`
@@ -71,9 +88,13 @@ var password = generator.generate({
 	length: 10,
 	numbers: true
 });
-
+var id = generator.generate({
+	length: 10,
+	numbers: true
+});
 const Report = () => {
-	const { orgId, GetOrg } = useContext(AppContext);
+	const [startDate, setStartDate] = useState(new Date());
+	const { orgId, GetOrg, i18n, lang, t } = useContext(AppContext);
 	let history = useHistory();
 	let { company } = useParams();
 
@@ -82,7 +103,7 @@ const Report = () => {
 	const [report, setReport] = useState("");
 	const [occurTime, setOccurTime] = useState("");
 	const [details, setDetails] = useState("");
-	const [reportId, setReportId] = useState(password);
+	const [reportId, setReportId] = useState(id);
 	const [reportPassword, setReportPassword] = useState(password);
 
 	const handleSubmit = async (e) => {
@@ -96,7 +117,7 @@ const Report = () => {
 					reportId: reportId,
 					reportPassword, reportPassword,
 					report: report,
-					occurTime: occurTime,
+					occurTime: startDate,
 					dateAdded: new Date().toUTCString(),
 					reportDetails: details,
 					orgId: orgId
@@ -104,11 +125,11 @@ const Report = () => {
 			})
 
 				.then(
-				
-						setLoading(false),
-						alert("Thank you! Your message has been successfully sent"),
-						history.push(`/${company}`)
-					)
+
+					setLoading(false),
+					alert("Thank you! Your message has been successfully sent"),
+					history.push(`/${company}`)
+				)
 
 		}
 		catch (error) {
@@ -120,13 +141,14 @@ const Report = () => {
 
 
 	useEffect(() => {
-		GetOrg(company)
+		GetOrg(company);
+		i18n.changeLanguage(lang);
 	}, []);
 
 
 	return (
 		<div>
-
+			<TopNavReport />
 			<Container>
 				<Card>
 					<CardContent>
@@ -136,32 +158,55 @@ const Report = () => {
 
 
 								<div>
-									<h4 >Your uniq report ID: {reportId}</h4>
-									<h4 style={{ marginBottom: "30px" }}>Password: {reportId}</h4>
+									<Banner
+										title={t('banner.create-report.title')}
+										ingress={t('banner.create-report.ingress')}
+										body={t('banner.create-report.body')}
+									>
+
+									</Banner>
+
 
 									<form>
 										<InputGroup>
-											<Label>Date of report</Label>
-											<Input type="text" rows="1" placeholder="Date of report" value={new Date().toUTCString()} disabled />
+											<Label>{t('input.date-of-report.label')}</Label>
+											<Input type="text" rows="1" placeholder={t('input.date-of-report.placeholder')} value={new Date().toUTCString()} disabled />
 										</InputGroup>
 										<InputGroup>
-											<Label>Please describe your concern</Label>
-											<Input type="text" rows="10" placeholder="Description" value={report} onChange={(e) => setReport(e.target.value)} />
+											<Label>{t('input.report.label')}</Label>
+											<Input type="text" rows="10" placeholder={t('input.report.placeholder')} value={report} onChange={(e) => setReport(e.target.value)} />
 										</InputGroup>
 										<InputGroup>
-											<Label>When did this happen?</Label>
-											<Input type="text" placeholder="Occur time" value={occurTime} onChange={(e) => setOccurTime(e.target.value)} />
-										</InputGroup>
-										<InputGroup>
-											<Label>Please provide any important details</Label>
-											<Input type="text" placeholder="Details" value={details} onChange={(e) => setDetails(e.target.value)} />
+											<Label>{t('input.time-of-occur.label')}</Label>
+											<Picker
+												showTimeSelect dateFormat="Pp"
+												locale="fi" selected={startDate}
+												onChange={date => setStartDate(date)}
+											/>
 										</InputGroup>
 
 
+										<InputGroup>
+											<Label>{t('input.report-details.label')}</Label>
+											<Input type="text" placeholder={t('input.report-details.placeholder')} value={details} onChange={(e) => setDetails(e.target.value)} />
+										</InputGroup>
 
-										<Button to="/" variant="primary" type="submit" onClick={e => handleSubmit(e)}>
-											Send private messsage
-				</Button>
+
+										<Banner
+
+											title={t('banner.report-id-password.title')}
+											ingress={t('banner.report-id-password.ingress')}
+											body={t('banner.report-id-password.body')}
+										>
+											<p style={{ marginTop: "30px" }}>Report ID</p>
+											<h3 >{reportId}</h3>
+											<p >Password:</p>
+											<h3 style={{ marginBottom: "30px" }}>{reportPassword}</h3>
+											<Button to="/" variant="primary" type="submit" onClick={e => handleSubmit(e)}>
+												{t('button.send')}
+											</Button>
+										</Banner>
+
 									</form>
 								</div>
 								:

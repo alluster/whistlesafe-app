@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-
-const ColorBar = (props) => {
+interface Props {
+	orgColor: string
+}
+const ColorBar = ({orgColor}: Props) => {
 	const Bar = styled.div`
 		height: 6px; 
 		position: absolute; 
@@ -12,13 +14,8 @@ const ColorBar = (props) => {
 
 	`
 
-	useEffect(() => {
-		return () => {
-		}
-	}, [])
-
 	return (
-		<Bar style={{ backgroundColor: props.orgColor }} />
+		<Bar style={{ backgroundColor: orgColor }} />
 
 	);
 };

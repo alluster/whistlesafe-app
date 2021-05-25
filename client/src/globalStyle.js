@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
 
 
     input {
-		all: unset;
+		// all: unset;
 		font-family: 'Open Sans', sans-serif;
 
         ::-webkit-input-placeholder {
