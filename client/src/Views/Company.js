@@ -66,7 +66,9 @@ const Company = () => {
 					body={t('banner.follow-up.body')}
 				>
 					<ButtonRow style={{ marginTop: "30px"}}>
-						<Button to={`/followreport/${company}`}><h4>{t('button.follow-report')}</h4></Button>
+						<Button to={`https://dashboard.whistlesafe.eu/followreport/${company}`} >
+							<h4>{t('button.follow-report')}</h4>
+						</Button>
 					</ButtonRow>
 				</Banner>
 				

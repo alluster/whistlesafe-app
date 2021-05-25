@@ -105,7 +105,7 @@ const LanguageSelector = styled.div`
 							</LanguageSelector>
 						</NavItem>
 						<NavItem>
-							<a href="https://whistlesafe.herokuapp.com" >
+							<a href="https://dashboard.whistlesafe.eu" >
 								<h5>Login</h5>
 							</a>
 
